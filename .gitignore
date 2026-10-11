@@ -1,0 +1,22 @@
+# Segredos
+.env
+.env.*
+!.env.example
+
+# Node.js
+node_modules/
+dist/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+
+# IDEs e OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
