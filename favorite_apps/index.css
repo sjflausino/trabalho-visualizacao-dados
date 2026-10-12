@@ -1,0 +1,28 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 2.5rem 1.5rem;
+  max-width: 900px;
+  margin-inline: auto;
+  color: #1a1a1a;
+  background: #fafafa;
+}
+
+h1 { font-size: 2rem; margin: 0 0 .3rem; color: #8338ec; }
+.subtitle { color: #666; margin: 0 0 2rem; font-size: .95rem; }
+
+section { margin-bottom: 3rem; }
+h2 { font-size: 1.25rem; margin: 0 0 .3rem; }
+.section-note { color: #666; margin: 0 0 1rem; font-size: .9rem; }
+
+svg { width: 100%; height: auto; display: block; overflow: visible; }
+
+.domain, .tick line { stroke: #ccc; }
+.tick text { fill: #666; font-size: .8rem; }
+
+.grid line { stroke: #e5e5e5; stroke-dasharray: 3 3; }
+.grid .domain { display: none; }
+
+footer { margin-top: 2.5rem; font-size: .8rem; color: #888; }
