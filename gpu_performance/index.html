@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Carregamento dos Dados</title>
+    <title>Redesign de Visualizações - GPUs</title>
     <link rel="stylesheet" href="index.css">
 </head>
-
 <body>
     <div class="main-container">
-        <svg>
-        </svg>
-        <div class="buttom-container">
-            <button id="loadBtn">Load Chart</button>
-            <button id="clearBtn">Clear Chart</button>
+        <h2>Análise de Desempenho de GPUs</h2>
+        
+        <!-- Botoes de Controle -->
+        <div class="button-container">
+            <button id="btn-original" class="active">Gráfico Original</button>
+            <button id="btn-designA">Design A (Escala Log)</button>
+            <button id="btn-designB">Design B (Ranking Top 15)</button>
         </div>
+
+        <!-- Tela Principal (SVG Único) -->
+        <svg id="mainChart"></svg>
     </div>
 
     <script type="module" src="src/main.js"></script>
 </body>
-
 </html>

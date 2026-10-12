@@ -6,16 +6,18 @@ body {
   }
 
 .main-container {
-    height: 500px;
+    /* Substituímos a altura fixa para permitir rolagem na página */
+    min-height: 100vh; 
+    padding: 40px 0;
 
     display: flex;
     background-color: #efefef;
 
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: center; 
     align-items: center; 
 }
+
 
 .buttom-container {
     display: flex;
@@ -27,7 +29,6 @@ body {
 }
 
 svg {
-    margin: 10px;
     background-color: #ffffff;
 
     border-radius: 8px;
@@ -35,6 +36,10 @@ svg {
 
     height: 400px;
     width: 800px;
+    
+    /* Esta linha é a mais importante: impede o flexbox de encolher os gráficos */
+    flex-shrink: 0; 
+    margin-bottom: 40px;
 }
 
 circle {
@@ -45,4 +50,25 @@ circle {
 
 button {
     margin: 10px;
+}
+
+/* Estilos para o Tooltip interativo do Design A */
+.tooltip {
+    position: absolute;
+    text-align: left;
+    padding: 8px;
+    font: 12px sans-serif;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 4px;
+    pointer-events: none; /* Evita que o tooltip bloqueie o mouse */
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* Ajuste de tamanho para os SVGs */
+svg {
+    height: 400px;
+    width: 800px;
+    margin-bottom: 40px;
 }
