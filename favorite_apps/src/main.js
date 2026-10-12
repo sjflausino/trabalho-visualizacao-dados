@@ -1,16 +1,57 @@
-// ============================================================
-// main.js
-// Ponto de entrada: carrega os dados (DuckDB) e desenha os dois gráficos (D3).
-// ============================================================
-import { loadData } from './data.js';
-import { renderLineChart } from './lineChart.js';
-import { renderBumpChart } from './bumpChart.js';
+import { Teens } from "./teens.js";
+import { renderLineChart, renderBumpChart } from './plot.js';
 
-// Dados já validados e transformados pelo DuckDB
-const { rows } = await loadData();
+window.onload = async () => {
+    const teens = new Teens();
+    await teens.init();
+    await teens.loadTeens();
 
-// Gráfico 1: evolução de cada app ao longo do tempo
-renderLineChart('#chart-line', rows);
+    // Query unificada: já traz os dados com arredondamento e calcula o ranking usando SQL
+    const sql = `
+        WITH base AS (
+          SELECT
+            date, app, survey,
+            ROUND(value) AS value,
+            AVG(value) OVER (PARTITION BY app) AS avg_app
+          FROM teens_data
+        )
+        SELECT
+          date, app, survey, value,
+          ROW_NUMBER() OVER (PARTITION BY date ORDER BY value DESC, avg_app DESC) AS rank
+        FROM base
+        ORDER BY app, date ASC;
+    `;
+    
+    const rawData = await teens.query(sql);
+    
+    // CORREÇÃO: Força a conversão de BigInt para Number do JavaScript
+    const data = rawData.map(d => ({
+        ...d,
+        rank: Number(d.rank),
+        value: Number(d.value)
+    }));
 
-// Gráfico 2: posição (ranking) de cada app em cada pesquisa
-renderBumpChart('#chart-bump', rows);
+    // Seletores
+    const btnLine = document.getElementById("btn-line");
+    const btnBump = document.getElementById("btn-bump");
+    const selector = "#mainChart"; // SVG único
+
+    // Renderiza o padrão
+    renderLineChart(data, selector);
+
+    // Alternância de abas
+    function setActiveButton(activeBtn) {
+        [btnLine, btnBump].forEach(btn => btn.classList.remove("active"));
+        activeBtn.classList.add("active");
+    }
+
+    btnLine.addEventListener("click", () => {
+        setActiveButton(btnLine);
+        renderLineChart(data, selector);
+    });
+
+    btnBump.addEventListener("click", () => {
+        setActiveButton(btnBump);
+        renderBumpChart(data, selector);
+    });
+};

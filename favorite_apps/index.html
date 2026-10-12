@@ -1,34 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Snapchat is Tops with American Teens</title>
-  <link rel="stylesheet" href="/index.css" />
+    <meta charset="UTF-8">
+    <title>Snapchat is Tops with American Teens</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <header>
-    <h1>Snapchat is Tops with American Teens</h1>
-    <p class="subtitle">
-      Snapchat is Tops with American Teens
-    </p>
-  </header>
+    <div class="main-container">
+        <h2>Snapchat is Tops with American Teens</h2>
+        <p class="subtitle">Evolução do percentual e ranking de popularidade</p>
+        
+        <!-- Botões de Controle -->
+        <div class="button-container">
+            <button id="btn-line" class="active">Gráfico de Linhas (%)</button>
+            <button id="btn-bump">Bump Chart (Ranking)</button>
+        </div>
 
-  <main>
-    <section>
-      <h2>Snapchat ultrapassou o Instagram em 2016</h2>
-      <div id="chart-line"></div>
-    </section>
+        <!-- Tela Principal (SVG Único) -->
+        <svg id="mainChart"></svg>
+    </div>
 
-    <section>
-      <h2>Snapchat saiu do 4º lugar para o 1º; o Twitter caiu do 2º para o 4º</h2>
-      <p class="section-note">Posição de cada app no ranking de favoritos; o número dentro do círculo é o %. Facebook e Twitter empataram em Fall 2016 e Spring 2017 e foram desempatados pela maior média entre todas as pesquisas.</p>
-      <div id="chart-bump"></div>
-    </section>
-  </main>
-
-  <footer>Fonte: PiperJaffray · Fall '17 survey of 6,100 teens</footer>
-
-  <script type="module" src="/src/main.js"></script>
+    <script type="module" src="src/main.js"></script>
 </body>
 </html>
