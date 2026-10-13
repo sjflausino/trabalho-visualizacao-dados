@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ataques fatais de ursos — Análise de dados</title>
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <header class="cabecalho">
+    <div class="container">
+      <p class="sobretitulo">VISUALIZAÇÃO DE DADOS</p>
+      <h1>Ataques fatais de ursos na América do Norte</h1>
+      <p class="introducao">
+        Uma análise dos registros históricos de vítimas fatais,
+        explorando sua distribuição temporal e etária.
+      </p>
+    </div>
+  </header>
+
+  <main class="container painel">
+    <section class="cartao">
+      <div class="cabecalho-grafico">
+        <div>
+          <p class="identificador">REDESIGN A</p>
+          <h2>Registros por década</h2>
+          <p class="descricao">
+            Como a quantidade de registros se distribui ao longo do tempo?
+          </p>
+        </div>
+      </div>
+
+      <div id="chart-decades" class="area-grafico"></div>
+
+      <p class="observacao">
+        A década de 2010 contém registros somente até 2018.
+        Os valores representam registros de vítimas, não necessariamente
+        incidentes distintos.
+      </p>
+    </section>
+
+    <section class="cartao">
+      <div class="cabecalho-grafico">
+        <div>
+          <p class="identificador">REDESIGN B</p>
+          <h2>Distribuição das idades</h2>
+          <p class="descricao">
+            Como os registros se distribuem entre as faixas etárias?
+          </p>
+        </div>
+      </div>
+
+      <div id="chart-bears" class="area-grafico"></div>
+
+      <p class="observacao">
+        Cada barra representa uma faixa etária de dez anos.
+        Registros sem idade válida não entram na distribuição.
+      </p>
+    </section>
+
+    <footer class="rodape">
+      <p>Fonte: base North American Bear Attacks.</p>
+      <p>Visualizações desenvolvidas com D3.js.</p>
+    </footer>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
