@@ -1,5 +1,4 @@
 // Calcula a posição (1 = mais votado) de cada app em cada pesquisa.
-// Em caso de empate, quem estava na frente na pesquisa anterior continua na frente.
 export function computeRanks(rows) {
   const dates = [...new Set(rows.map(r => +r.date))].sort((a, b) => a - b);
   const prevRank = new Map();

@@ -1,6 +1,4 @@
 import * as d3 from 'd3';
-
-// Constantes unificadas
 const COLORS = {
   Instagram: '#8338ec',
   Snapchat:  '#e63946',
@@ -20,7 +18,7 @@ export function renderLineChart(data, selector) {
   const innerW = width - margin.left - margin.right;
   const innerH = height - margin.top - margin.bottom;
 
-  svg.selectAll("*").remove(); // Limpa a tela
+  svg.selectAll("*").remove(); 
 
   const series = d3.groups(data, d => d.app)
     .map(([app, values]) => ({ app, values: values.sort((a, b) => a.date - b.date) }));
@@ -80,12 +78,12 @@ export function renderBumpChart(data, selector) {
   const svg = d3.select(selector);
   const width = +svg.style("width").split("px")[0] || 860;
   const height = +svg.style("height").split("px")[0] || 440;
-  const margin = { top: 30, right: 120, bottom: 40, left: 120 };
+  const margin = { top: 50, right: 120, bottom: 40, left: 120 };
 
   const innerW = width - margin.left - margin.right;
   const innerH = height - margin.top - margin.bottom;
 
-  svg.selectAll("*").remove(); // Limpa a tela[cite: 2]
+  svg.selectAll("*").remove(); // Limpa a tela
 
   const surveys = [...new Map(data.map(d => [+d.date, d.survey])).entries()].sort((a, b) => a[0] - b[0]);
   const series = d3.groups(data, d => d.app)
@@ -101,7 +99,7 @@ export function renderBumpChart(data, selector) {
 
   g.selectAll('.survey-label').data(surveys).join('text')
     .attr('x', s => x(s[0]))
-    .attr('y', -10)
+    .attr('y', -20)
     .attr('text-anchor', 'middle')
     .attr('fill', '#666')
     .attr('font-size', '.8rem')
@@ -114,7 +112,7 @@ export function renderBumpChart(data, selector) {
   groups.append('path')
     .attr('fill', 'none')
     .attr('stroke', d => color(d.app))
-    .attr('stroke-width', 5)
+    .attr('stroke-width', 3)
     .attr('stroke-linecap', 'round')
     .attr('d', d => line(d.values));
 

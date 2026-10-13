@@ -5,6 +5,10 @@ body {
     background-color: #fafafa;
     color: #1a1a1a;
 }
+img{
+    height: 75%;
+    width:  75%;
+}
 
 .main-container {
     min-height: 100vh; 

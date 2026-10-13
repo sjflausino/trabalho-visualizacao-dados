@@ -1,6 +1,4 @@
 import { loadDb } from './db.js';
-
-// Usamos ?url para o Vite empacotar o CSV corretamente, assim como no projeto GPU
 import csvUrl from '../teens-favorite-apps.csv?url';
 
 export class Teens {
@@ -36,12 +34,10 @@ export class Teens {
     async query(sql) {
         if (!this.db || !this.conn)
             throw new Error('A base de dados não foi inicializada. Chame init() primeiro.');
-
         let result = await this.conn.query(sql);
-        // Conversão nativa de Arrow para JS Objects
         return result.toArray().map(row => {
             const obj = row.toJSON();
-            // Normaliza a data (o DuckDB WebAssembly pode devolver timestamps numéricos)
+            // Normaliza a data 
             if (typeof obj.date === 'number') {
                 obj.date = new Date(obj.date > 1e7 ? obj.date : obj.date * 86400000);
             }
