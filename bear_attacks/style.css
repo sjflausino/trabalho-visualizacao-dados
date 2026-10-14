@@ -220,3 +220,26 @@ h1 {
   stroke: #172b4d;
   stroke-width: 3px;
 }
+.visualizacao-original {
+  margin-bottom: 32px;
+}
+
+.visualizacao-original figure {
+  margin: 16px 0 0;
+}
+
+.imagem-original {
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.visualizacao-original figcaption {
+  margin-top: 8px;
+  color: #666;
+  font-size: 0.9rem;
+  text-align: center;
+}
