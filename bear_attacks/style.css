@@ -1,0 +1,222 @@
+/* Paleta e configurações gerais */
+:root {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #243247;
+  background: #f3f6fa;
+
+  --cor-texto: #243247;
+  --cor-secundaria: #637187;
+  --cor-borda: #e1e7ef;
+  --azul: #3478a8;
+  --roxo: #7b61a8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.container {
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* Cabeçalho da página */
+.cabecalho {
+  background: #ffffff;
+  border-bottom: 1px solid var(--cor-borda);
+  padding: 42px 0 36px;
+}
+
+.sobretitulo,
+.identificador {
+  margin: 0 0 8px;
+  color: var(--azul);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+h1 {
+  max-width: 760px;
+  margin: 0;
+  color: var(--cor-texto);
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.introducao {
+  max-width: 680px;
+  margin: 16px 0 0;
+  color: var(--cor-secundaria);
+  font-size: 1.05rem;
+}
+
+/* Área dos gráficos */
+.painel {
+  padding-top: 32px;
+  padding-bottom: 28px;
+}
+
+.cartao {
+  margin-bottom: 26px;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid var(--cor-borda);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgb(30 50 80 / 5%);
+}
+
+.cabecalho-grafico {
+  margin-bottom: 16px;
+}
+
+.cabecalho-grafico h2 {
+  margin: 0;
+  color: var(--cor-texto);
+  font-size: 1.4rem;
+  line-height: 1.3;
+}
+
+.descricao {
+  margin: 8px 0 0;
+  color: var(--cor-secundaria);
+  font-size: 0.95rem;
+}
+
+.area-grafico {
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.area-grafico svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.observacao {
+  margin: 12px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--cor-borda);
+  color: var(--cor-secundaria);
+  font-size: 0.84rem;
+}
+
+/* Aparência dos elementos D3 */
+.area-grafico svg text {
+  font-family: inherit;
+  fill: var(--cor-secundaria);
+  font-size: 12px;
+}
+
+.area-grafico svg .domain,
+.area-grafico svg .tick line {
+  stroke: #d6deea;
+}
+
+.area-grafico svg rect {
+  transition: opacity 160ms ease;
+}
+
+.area-grafico svg rect:hover {
+  opacity: 0.78;
+}
+
+.area-grafico svg text.valor {
+  fill: var(--cor-texto);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.nota {
+  margin: 10px 0 0;
+  color: var(--cor-secundaria);
+  font-size: 0.84rem;
+}
+
+/* Rodapé */
+.rodape {
+  padding: 8px 0 24px;
+  color: var(--cor-secundaria);
+  font-size: 0.82rem;
+}
+
+.rodape p {
+  margin: 4px 0;
+}
+
+/* Adaptação para telas menores */
+@media (max-width: 600px) {
+  .container {
+    width: min(100% - 24px, 1100px);
+  }
+
+  .cabecalho {
+    padding: 30px 0;
+  }
+
+  .cartao {
+    padding: 18px 14px;
+    border-radius: 10px;
+  }
+
+  .cabecalho-grafico h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Tooltip interativo dos gráficos */
+.tooltip {
+  position: absolute;
+  z-index: 1000;
+  padding: 10px 14px;
+  background: #243247;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+  transition: opacity 120ms ease;
+}
+
+.tooltip.visivel {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Melhor legibilidade dos rótulos dos gráficos */
+.area-grafico svg .titulo-eixo {
+  fill: #243247;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.area-grafico svg .tick text {
+  font-size: 11px;
+}
+
+.area-grafico svg .tick line {
+  stroke: #d6deea;
+}
+
+.area-grafico svg .domain {
+  stroke: #c5cfdd;
+}
+
+/* Mantém a indicação de foco na navegação por teclado */
+.area-grafico svg rect:focus-visible {
+  outline: none;
+  stroke: #172b4d;
+  stroke-width: 3px;
+}
